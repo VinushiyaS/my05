@@ -1,38 +1,380 @@
-.App {
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 20px;
+  background-color: #2b0707;
+  color: #fff;
+}
+
+/* Logo styling */
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* Links container */
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+/* Individual link styling */
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for links */
+.nav-link:hover {
+  color: #c79797;
+  text-decoration:none;
+}
+/* Footer container styling */
+.footer {
+  background-color: #2b0707;
+  color: #fff;
+  padding: 1px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top:433px;
+  
+}
+/* Footer layout */
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+/* Individual footer sections */
+.footer-section {
+  max-width: 200px;
+  margin-right: 480px;
+}
+.footer-section1 {
+  max-width: 300px;
+  margin-left: 480px;
+  
+}
+
+/* Section titles */
+.footer-section h4 {
+  font-size:18px;
+  margin-bottom: 10px;
+}
+.footer-section1 h4 {
+  font-size:18px;
+  margin-bottom: 10px;
+}
+
+/* Footer links and contact details */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-section1 ul {
+  list-style: none;
+  padding: 0;
+}
+
+
+.footer-section li {
+  margin-bottom: 10px;
+}
+.footer-section1 li {
+  margin-bottom: 10px;
+}
+
+.footer-section a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-section1 a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-section p{
+  font-size: 10px;
+  text-align:left;
+  margin-right: 30px;
+}
+
+.footer-section a:hover {
+  color: #ddd;
+}
+.footer-section1 a:hover {
+  color: #ddd;
+}
+
+/* Copyright section */
+.footer-bottom {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+  border-top: 1px solid #555;
+  padding-top: 10px;
+}
+
+/* Responsive footer for smaller screens */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    margin-bottom: 20px;
+  }
+}
+
+/* Signup.css */
+
+.signup-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #b69090;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 100px;
+}
+
+.signup-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2b0707;
+  font-size: 50px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  display: block;
+  color: #2b0707;
+  font-size: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #2b0707;
+  background-color: #e7d8d8;
+  font-size: 18px;
+}
+
+.signup-btn {
+  padding: 10px 15px;
+  background-color: #2b0707;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.signup-btn:hover {
+  background-color: #773737;
+}
+
+.form-group input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.signup-link {
+  text-align: center;
+  margin-top: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.signup-link a {
+  color: #2b0707;
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+/* Login.css */
+
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #b69090;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 100px;
+}
+
+.login-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2b0707;
+  font-size: 50px;
+}
+
+.login-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.form-group {
+  margin-bottom: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-group label {
+  margin-bottom: 5px;
+  display: block;
+  color: #2b0707;
+  font-size: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #2b0707;
+  background-color: #e7d8d8;
+  font-size: 18px;
+}
+
+.login-btn {
+  padding: 10px 15px;
+  background-color: #2b0707;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #773737;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-link a {
+  color: #2b0707;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* ForgotPassword.css */
+
+.forgot-password-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #b69090;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 100px;
+}
+
+.forgot-password-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2b0707;
+  font-size: 50px;
+}
+
+.forgot-password-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  display: block;
+  color: #2b0707;
+  font-size: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #2b0707;
+  background-color: #e7d8d8;
+  font-size: 18px;
+}
+
+.forgot-password-btn {
+  padding: 10px 15px;
+  background-color: #2b0707;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.forgot-password-btn:hover {
+  background-color: #773737;
+}
+
+/* Add this CSS to your stylesheet */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  border: 1px solid #380909;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #dbc7c7;
+}
+
+tr:nth-child(even) {
+  background-color: #e0c7c7;
 }
