@@ -9,19 +9,29 @@ const Login = () => {
   });
   const navigate = useNavigate();
 
-  const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+  // Handle form field changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
-  const handleSubmit = async e => {
+  // Handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post('/api/auth/login', formData);
       localStorage.setItem('token', res.data.token);
-      if (res.data.role === 'admin') {
-        navigate('/admin-dashboard');
-      } else if (res.data.role === 'committee-leader') {
-        navigate('/committee-dashboard');
-      } else {
-        navigate('/user-dashboard');
+
+      // Navigate based on user role
+      switch (res.data.role) {
+        case 'admin':
+          navigate('/admin-dashboard');
+          break;
+        case 'committee-leader':
+          navigate('/committee-dashboard');
+          break;
+        default:
+          navigate('/user-dashboard');
       }
     } catch (err) {
       console.error('Login failed:', err.response ? err.response.data : err.message);
@@ -37,20 +47,24 @@ const Login = () => {
           <label htmlFor="email">Email:</label>
           <input 
             type="email" 
+            id="email" 
             name="email" 
             value={formData.email} 
             onChange={handleChange} 
             required 
+            placeholder="Enter your email"
           />
         </div>
         <div className="form-group">
           <label htmlFor="password">Password:</label>
           <input 
             type="password" 
+            id="password" 
             name="password" 
             value={formData.password} 
             onChange={handleChange} 
             required 
+            placeholder="Enter your password"
           />
         </div>
         <button type="submit" className="login-btn">Login</button>

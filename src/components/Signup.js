@@ -2,51 +2,46 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function Signup() {
+const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [userName, setUserName] = useState('');
-    const [passwordVisible, setPasswordVisible] = useState(false); // State for password visibility toggle
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(''); // New state for error messages
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrorMessage(''); // Reset error message
 
-        // Check if all fields are filled
         if (!userName || !email || !password || !confirmPassword) {
-            alert('Please fill in all fields.');
+            setErrorMessage('Please fill in all fields.');
             return;
         }
 
-        // Check if passwords match
         if (password !== confirmPassword) {
-            alert('Passwords do not match!');
+            setErrorMessage('Passwords do not match!');
             return;
         }
 
         try {
             const response = await axios.post('http://localhost:5000/api/auth/signup', {
+                userName,
                 email,
-                password,
-                userName
+                password
             });
 
-            // Handle successful signup
             alert('Signup successful! Please log in with your credentials.');
             console.log(response.data);
-
-            // Redirect to login page after signup
             navigate('/login');
         } catch (error) {
-            // Handle errors
-            console.error('Error:', error.response?.data || error.message);
-            alert(`Signup failed! ${error.response?.data?.message || 'Please try again later.'}`);
+            setErrorMessage(`Signup failed! ${error.response?.data?.message || 'Please try again later.'}`);
         }
     };
 
     const togglePasswordVisibility = () => {
-        setPasswordVisible(!passwordVisible);
+        setPasswordVisible(prevState => !prevState);
     };
 
     return (
@@ -54,9 +49,10 @@ function Signup() {
             <h2>Signup</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>User Name</label>
+                    <label htmlFor="userName">User Name</label>
                     <input 
                         type="text" 
+                        id="userName" 
                         className="form-control" 
                         placeholder="Enter user name"
                         value={userName}
@@ -65,9 +61,10 @@ function Signup() {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Email address</label>
+                    <label htmlFor="email">Email address</label>
                     <input 
                         type="email" 
+                        id="email" 
                         className="form-control" 
                         placeholder="Enter email"
                         value={email}
@@ -76,10 +73,11 @@ function Signup() {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Password</label>
+                    <label htmlFor="password">Password</label>
                     <div className="password-container">
                         <input 
                             type={passwordVisible ? "text" : "password"}
+                            id="password" 
                             className="form-control" 
                             placeholder="Enter password"
                             value={password}
@@ -92,10 +90,11 @@ function Signup() {
                     </div>
                 </div>
                 <div className="form-group">
-                    <label>Confirm Password</label>
+                    <label htmlFor="confirmPassword">Confirm Password</label>
                     <div className="password-container">
                         <input 
                             type={passwordVisible ? "text" : "password"}
+                            id="confirmPassword" 
                             className="form-control" 
                             placeholder="Confirm password"
                             value={confirmPassword}
@@ -107,6 +106,7 @@ function Signup() {
                         </button>
                     </div>
                 </div>
+                {errorMessage && <div className="error-message">{errorMessage}</div>} {/* Display error message */}
                 <button type="submit" className="btn">Signup</button>
                 <p className="text-center mt-3">
                     Already have an account? <Link to="/login" className='nextlink'>Login</Link>

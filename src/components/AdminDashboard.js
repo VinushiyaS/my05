@@ -84,7 +84,7 @@ const AdminDashboard = () => {
     const fetchAdminData = async () => {
       try {
         const [leadersRes, , ] = await Promise.all([
-          axios.get('/api/users/committee-leaders'),
+          axios.get('http://localhost:5000/api/users/committee-leaders'),
           // axios.get('/api/tournaments'),
           // axios.get('/api/subscriptions')
         ]);
